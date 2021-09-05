@@ -1,0 +1,7 @@
+LogMessage:
+  Reload: '§aRe-read the configuration file.'
+  StorageEquipment: '§aStore player equipment information.'
+  LoadFancyCore: '§aLoaded FancyCore.'
+OpMessage:
+  Reload: '§e[FancyGui] §aRe-read the configuration file.'
+Title: '䆍                      Equipment'

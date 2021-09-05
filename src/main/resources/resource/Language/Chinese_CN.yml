@@ -1,0 +1,7 @@
+LogMessage:
+  Reload: '§a重新读取设定档。'
+  StorageEquipment: '§a储存玩家装备资料。'
+  LoadFancyCore: '§aFancyCore 已加载。'
+OpMessage:
+  Reload: '§e[FancyGui] §a重新读取设定档。'
+Title: '䆍                      装备'

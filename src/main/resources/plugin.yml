@@ -1,0 +1,12 @@
+name: FancyGui
+version: '${version}'
+main: com.daxton.fancygui.FancyGui
+api-version: 1.16
+prefix: FancyGui
+softdepend: [FancyCore]
+authors: [ s99889989 ]
+description: Custom GUI.
+commands:
+  fancygui:
+    description: Basic instructions.
+    aliases: fgui
