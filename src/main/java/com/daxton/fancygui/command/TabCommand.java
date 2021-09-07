@@ -13,7 +13,9 @@ import java.util.stream.Collectors;
 
 public class TabCommand implements TabCompleter {
 
-    private final String[] subCommands = {"reload"};
+    private final String[] subCommands = {"reload", "gui"};
+
+    public static List<String> guiList = new ArrayList<>();
 
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args){
@@ -21,6 +23,12 @@ public class TabCommand implements TabCompleter {
 
         if (args.length == 1){
             commandList = Arrays.stream(subCommands).filter(s -> s.startsWith(args[0])).collect(Collectors.toList());
+        }
+
+        if (args.length == 2){
+            if(args[0].equals("gui")){
+                commandList = guiList;
+            }
         }
 
         return commandList;

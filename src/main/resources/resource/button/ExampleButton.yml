@@ -1,0 +1,53 @@
+Buttons:
+
+  Close:
+    Material: OAK_DOOR
+    DisplayName: '§e關閉視窗'
+    Lore:
+    - ''
+    - '§e左鍵: 關閉視窗'
+    - '§eLeft button: close the window'
+    Left:
+    - Action[a=CloseGui]
+
+  Stats:
+    Material: 'PLAYER_HEAD'
+    HeadValue: '&gui_self_name&'
+    CustomModelData: 0
+    DisplayName: '{#f77703}&gui_self_name&'
+    Lore:
+    - ''
+    - '{#f75703}Health: &gui_self_base_nowhealth&/&gui_self_base_maxhealth&'
+    
+  Explode:
+    Material: 'COAL'
+    CustomModelData: 7
+    DisplayName: '§eExplode'
+    Lore:
+    - ''
+    - '§e左鍵: 彈開旁邊生物'
+    - '§eLeft button: pop the next creature'
+    Left:
+    - Action[a=Explode]
+
+  TornadoLine:
+    Material: 'COAL'
+    CustomModelData: 0
+    DisplayName: '§eTornado Line'
+    Lore:
+    - ''
+    - '§e左鍵: 向前方發射龍捲風'
+    - '§e左鍵: Throw a tornado forward'
+    Left:
+    - Action[a=TornadoLine]
+
+  ToGacha:
+    Material: 'COAL'
+    CustomModelData: 0
+    DisplayName: '§eSwitch Gui'
+    Lore:
+    - ''
+    - '§e左鍵: 切換Gui'
+    - '§e左鍵: Switch Gui'
+    Left:
+    - Action[a=ToGacha]

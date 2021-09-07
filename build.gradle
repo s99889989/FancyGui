@@ -48,3 +48,18 @@ processResources {
     }
 }
 compileJava.options.encoding = 'UTF-8'
+
+//project.buildDir = 'C:\\Users\\Gary\\Desktop\\Test'
+
+
+//tasks.register('copyReport', Copy) {
+//    from layout.buildDirectory.dir("C:/Users/Gary/IdeaProjects/FancyGui/build/libs/FancyGui-1.0.jar")
+//    into layout.buildDirectory.dir("C:/Users/Gary/Desktop/Test")
+//}
+
+task copyJar(type: Copy) {
+    from jar
+    into 'C:/Users/Gary/Desktop/1.16.5/plugins'
+}
+
+build.finalizedBy copyJar

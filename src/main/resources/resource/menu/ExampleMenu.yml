@@ -1,0 +1,31 @@
+#Gui標題
+#Gui title
+Title: 'ExampleMenu'
+
+#會忽略掉1~9
+#Will ignore 1~9
+Sort:
+- 'Stats.Explode.TornadoLine.4.5.6.7.ToGacha.Close'
+#- '1.2.3.4.5.6.7.8.9'
+#- '1.2.3.4.5.6.7.8.9'
+#- '1.2.3.4.5.6.7.8.9'
+#- '1.2.3.4.5.6.7.8.9'
+#- '1.2.3.4.5.6.7.8.9'
+
+#開啟指令/fgui gui exp
+#Open command /fgui gui exp
+Command: 'exp'
+
+#需要權限fancygui.exp
+#Need permission fancygui.exp
+Permission: 'exp'
+
+#打開Gui執行的動作
+#Open the action performed by Gui
+OpenAction:
+- Action[a=OpenGui]
+
+#關閉Gui執行的動作
+#Turn off actions performed by Gui
+CloseActions:
+- Action[a=CloseGui]

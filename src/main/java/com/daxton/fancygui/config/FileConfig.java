@@ -34,10 +34,10 @@ public class FileConfig {
     }
     //重新讀取設定檔
     public static void reload(){
-
         FancyGui fancyGui = FancyGui.fancyGui;
 
         config_Map.clear();
+
         config_Map = ConfigLoad.execute(fancyGui);
         //設置語言設定檔
         FileConfiguration resourcePackConfig = FileConfig.config_Map.get("config.yml");

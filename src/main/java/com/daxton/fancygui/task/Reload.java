@@ -7,7 +7,10 @@ public class Reload {
     public static void execute(){
         //設定檔
         FileConfig.reload();
-
+        //設置菜單
+        MenuSet.execute();
+        //設置按鈕
+        ButtonSet.execute();
     }
 
 }
