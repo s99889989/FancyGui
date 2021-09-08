@@ -22,7 +22,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler//當使用背包時
     public void onInventoryClick(InventoryClickEvent event){
-        //FancyGui.fancyGui.getLogger().info("打開背包");
+
     }
 
 }

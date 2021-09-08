@@ -24,9 +24,7 @@ public class CloseGui implements GuiCloseAction {
 
 	@Override
 	public void execute() {
-		closeList.forEach(actionMap -> {
-			TaskAction.execute(player, null, actionMap, null, String.valueOf((int)(Math.random()*100000)));
-		});
+		closeList.forEach(actionMap -> TaskAction.execute(player, null, actionMap, null, String.valueOf((int)(Math.random()*100000))));
 	}
 
 }

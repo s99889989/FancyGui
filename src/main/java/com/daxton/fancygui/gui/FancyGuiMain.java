@@ -1,7 +1,6 @@
 package com.daxton.fancygui.gui;
 
 import com.daxton.fancycore.api.gui.GUI;
-import com.daxton.fancygui.FancyGui;
 import com.daxton.fancygui.config.FileConfig;
 import com.daxton.fancygui.manager.GuiManager;
 import org.bukkit.configuration.file.FileConfiguration;

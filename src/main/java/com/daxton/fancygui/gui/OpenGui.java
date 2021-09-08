@@ -2,7 +2,6 @@ package com.daxton.fancygui.gui;
 
 import com.daxton.fancycore.api.gui.GUI;
 import com.daxton.fancycore.api.gui.button.GuiOpenAction;
-import com.daxton.fancycore.other.taskaction.MapGetKey;
 import com.daxton.fancycore.other.taskaction.StringToMap;
 import com.daxton.fancycore.task.TaskAction;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -25,9 +24,7 @@ public class OpenGui implements GuiOpenAction {
 
 	@Override
 	public void execute() {
-		openList.forEach(actionMap -> {
-			TaskAction.execute(player, null, actionMap, null, String.valueOf((int)(Math.random()*100000)));
-		});
+		openList.forEach(actionMap -> TaskAction.execute(player, null, actionMap, null, String.valueOf((int)(Math.random()*100000))));
 	}
 
 }

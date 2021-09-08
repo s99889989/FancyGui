@@ -18,10 +18,6 @@ public class MainCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args){
 
-        if(sender instanceof Player && !sender.isOp()){
-            return true;
-        }
-
         if(sender instanceof Player){
             Player player = (Player) sender;
 
@@ -32,6 +28,10 @@ public class MainCommand implements CommandExecutor {
                 }
             }
 
+        }
+
+        if(sender instanceof Player && !sender.isOp()){
+            return true;
         }
 
         //重新讀取設定

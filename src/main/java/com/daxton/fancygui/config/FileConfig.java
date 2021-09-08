@@ -11,7 +11,7 @@ import java.util.Map;
 public class FileConfig {
 
     //設定檔地圖
-    public static Map<String, FileConfiguration> config_Map = new HashMap();
+    public static Map<String, FileConfiguration> config_Map = new HashMap<>();
     //語言設定檔
     public static FileConfiguration languageConfig;
 

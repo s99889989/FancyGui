@@ -4,7 +4,6 @@ import com.daxton.fancycore.api.gui.GUI;
 import com.daxton.fancycore.api.gui.button.GuiAction;
 import com.daxton.fancycore.api.gui.button.GuiButton;
 import com.daxton.fancycore.api.gui.item.GuiItem;
-import com.daxton.fancycore.other.taskaction.MapGetKey;
 import com.daxton.fancycore.other.taskaction.StringToMap;
 import com.daxton.fancycore.task.TaskAction;
 import com.daxton.fancygui.config.FileConfig;
@@ -15,8 +14,6 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -61,24 +58,16 @@ public class ButtonGui implements GuiAction {
 
 	public void execute(ClickType clickType, InventoryAction inventoryAction, int place){
 		if(clickType == ClickType.LEFT){
-			leftList.forEach(actionMap -> {
-				TaskAction.execute(player, null, actionMap, null, String.valueOf((int)(Math.random()*100000)));
-			});
+			leftList.forEach(actionMap -> TaskAction.execute(player, null, actionMap, null, String.valueOf((int)(Math.random()*100000))));
 		}
 		if(clickType == ClickType.RIGHT){
-			rightList.forEach(actionMap -> {
-				TaskAction.execute(player, null, actionMap, null, String.valueOf((int)(Math.random()*100000)));
-			});
+			rightList.forEach(actionMap -> TaskAction.execute(player, null, actionMap, null, String.valueOf((int)(Math.random()*100000))));
 		}
 		if(clickType == ClickType.SHIFT_LEFT){
-			leftShiftList.forEach(actionMap -> {
-				TaskAction.execute(player, null, actionMap, null, String.valueOf((int)(Math.random()*100000)));
-			});
+			leftShiftList.forEach(actionMap -> TaskAction.execute(player, null, actionMap, null, String.valueOf((int)(Math.random()*100000))));
 		}
 		if(clickType == ClickType.SHIFT_LEFT){
-			rightShiftList.forEach(actionMap -> {
-				TaskAction.execute(player, null, actionMap, null, String.valueOf((int)(Math.random()*100000)));
-			});
+			rightShiftList.forEach(actionMap -> TaskAction.execute(player, null, actionMap, null, String.valueOf((int)(Math.random()*100000))));
 		}
 	}
 
