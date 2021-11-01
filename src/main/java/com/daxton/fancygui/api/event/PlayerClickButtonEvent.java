@@ -13,6 +13,8 @@ public class PlayerClickButtonEvent extends Event {
 	private static final HandlerList handlers = new HandlerList();
 	//玩家
 	private Player player;
+	//介面ID
+	private String gui_id;
 	//按鈕ID
 	private String button_id;
 	//按鈕內容列表
@@ -26,6 +28,7 @@ public class PlayerClickButtonEvent extends Event {
 
 	public PlayerClickButtonEvent(Player player, ButtonJson buttonJson){
 		this.player = player;
+		this.gui_id = buttonJson.getGui_id();
 		this.button_id = buttonJson.getButton_id();
 		this.action_list = buttonJson.getAction_list();
 	}
@@ -36,6 +39,14 @@ public class PlayerClickButtonEvent extends Event {
 
 	public void setPlayer(Player player) {
 		this.player = player;
+	}
+
+	public String getGui_id() {
+		return gui_id;
+	}
+
+	public void setGui_id(String gui_id) {
+		this.gui_id = gui_id;
 	}
 
 	public String getButton_id() {

@@ -1,10 +1,11 @@
 package com.daxton.fancygui.api;
 
+import com.daxton.fancycore.api.fancyclient.ClientConnect;
 import com.daxton.fancygui.FancyGui;
+import com.daxton.fancygui.api.build.ModGUI;
 import com.daxton.fancygui.api.json.ImageDownLoadJson;
 import com.daxton.fancygui.api.json.JsonCtrl;
 import com.daxton.fancygui.config.FileConfig;
-import com.daxton.fancygui.manager.GuiManager;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -29,8 +30,11 @@ public class FancyModPlayer {
 	public boolean player_version_mod;
 	//目前GUI路徑
 	public String gui_path = "";
+	public String menu_name = "";
 
 	public BukkitRunnable bukkitRunnable;
+
+	public ModGUI modGUI;
 
 	public FancyModPlayer(Player player){
 		this.player = player;
@@ -60,7 +64,7 @@ public class FancyModPlayer {
 		boolean kick_mod_version_wrong = config.getBoolean("ClientMod.kick_mod_version_wrong");
 
 
-		FancyConnect.sendMessage(player, "version:1.2.x");
+		ClientConnect.sendMessage(player, "version:1.2.x");
 
 		new BukkitRunnable() {
 			@Override
@@ -79,7 +83,7 @@ public class FancyModPlayer {
 					}
 				}
 
-				FancyConnect.sendMessage(player, "download:"+ JsonCtrl.writeJSON(new ImageDownLoadJson(download_list)));
+				ClientConnect.sendMessage(player, "download:"+ JsonCtrl.writeJSON(new ImageDownLoadJson(download_list)));
 			}
 		}.runTaskLater(FancyGui.fancyGui, 20L * (preload_delay+1));
 	}

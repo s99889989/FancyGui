@@ -2,6 +2,7 @@ package com.daxton.fancygui.manager;
 
 import com.daxton.fancygui.api.FancyModPlayer;
 
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -16,4 +17,6 @@ public class GuiManager {
 	public static Map<String, String> command_Mod_Menu_Map = new HashMap<>();
 	//玩家資訊
 	public static Map<UUID, FancyModPlayer> player_mod_data = new HashMap<>();
+
+
 }

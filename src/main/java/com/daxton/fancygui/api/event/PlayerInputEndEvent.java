@@ -14,6 +14,8 @@ public class PlayerInputEndEvent extends Event {
 	private static final HandlerList handlers = new HandlerList();
 	//玩家
 	private Player player;
+	//介面ID
+	private String gui_id;
 	//最後輸入的輸入框ID
 	private String button_id;
 	//最後輸入的內容
@@ -30,9 +32,18 @@ public class PlayerInputEndEvent extends Event {
 
 	public PlayerInputEndEvent(Player player, InputJson inputJson){
 		this.player = player;
+		this.gui_id = inputJson.getGui_id();
 		this.message_map = inputJson.getMessage_map();
 		this.button_id = inputJson.getButton_id();
 		this.message = inputJson.getMessage();
+	}
+
+	public String getGui_id() {
+		return gui_id;
+	}
+
+	public void setGui_id(String gui_id) {
+		this.gui_id = gui_id;
 	}
 
 	public String getButton_id() {

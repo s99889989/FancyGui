@@ -1,9 +1,9 @@
 package com.daxton.fancygui.listener;
 
+import com.daxton.fancycore.api.event.PlayerPackReceivedEvent;
 import com.daxton.fancycore.other.taskaction.StringToMap;
 import com.daxton.fancycore.task.TaskAction;
 import com.daxton.fancygui.FancyGui;
-import com.daxton.fancygui.api.FancyConnect;
 import com.daxton.fancygui.api.event.PlayerClickButtonEvent;
 import com.daxton.fancygui.api.event.PlayerCloseModGui;
 import com.daxton.fancygui.api.event.PlayerInputEndEvent;
@@ -12,23 +12,21 @@ import com.daxton.fancygui.api.json.ActionJson;
 import com.daxton.fancygui.api.json.ButtonJson;
 import com.daxton.fancygui.api.json.InputJson;
 import com.daxton.fancygui.manager.GuiManager;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.messaging.PluginMessageListener;
-import org.jetbrains.annotations.NotNull;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class ClientListener implements PluginMessageListener {
+public class ClientListener implements Listener {
 
-	@Override
-	public void onPluginMessageReceived(@NotNull String channel, @NotNull Player player, @NotNull byte[] message) {
-		String receivedString = read(message);
+	@EventHandler
+	public void onPlayerPackReceived(PlayerPackReceivedEvent event){
+		Player player = event.getPlayer();
+		String receivedString = event.getReceived();
 		//觸發FancyCore動作
 		if(receivedString.startsWith("action:")){
 			action(player, receivedString);
@@ -65,6 +63,7 @@ public class ClientListener implements PluginMessageListener {
 		}
 		FancyGui.sendLogger("接收測試: "+receivedString);
 	}
+
 	//輸入框結束事件
 	public void input(Player player, String receivedString){
 		String readString = receivedString.replace("input:", "");
@@ -98,13 +97,6 @@ public class ClientListener implements PluginMessageListener {
 		if(versionString.startsWith("1.2")){
 			GuiManager.player_mod_data.get(uuid).player_version_mod = true;
 		}
-	}
-	//讀取訊息
-	private String read(byte[] array) {
-		ByteBuf buf = Unpooled.wrappedBuffer(array);
-		if (buf.readUnsignedByte() == FancyConnect.IDX) {
-			return buf.toString(StandardCharsets.UTF_8);
-		} else throw new RuntimeException();
 	}
 
 }

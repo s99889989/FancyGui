@@ -8,6 +8,8 @@ import java.util.Map;
 
 public class InputJson {
 
+	//GUI的名稱
+	private String gui_id = "";
 	//最後輸入的輸入框ID
 	private String button_id = "";
 	//最後輸入的內容
@@ -63,5 +65,13 @@ public class InputJson {
 
 	public void setMessage_map(Map<String, String> message_map) {
 		this.message_map = message_map;
+	}
+
+	public String getGui_id() {
+		return gui_id;
+	}
+
+	public void setGui_id(String gui_id) {
+		this.gui_id = gui_id;
 	}
 }

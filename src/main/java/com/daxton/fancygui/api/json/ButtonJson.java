@@ -8,6 +8,8 @@ import java.util.List;
 
 public class ButtonJson {
 
+	//GUI的名稱
+	private String gui_id = "";
 	//按鈕ID
 	private String button_id = "";
 	//執行動作
@@ -47,5 +49,9 @@ public class ButtonJson {
 
 	public void setAction_list(List<String> action_list) {
 		this.action_list = action_list;
+	}
+
+	public String getGui_id() {
+		return gui_id;
 	}
 }
