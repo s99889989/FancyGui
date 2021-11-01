@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.daxton'
-version = '1.1'
+version = '1.2.0'
 
 repositories {
     mavenCentral()
@@ -21,6 +21,8 @@ dependencies {
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
 
     compileOnly fileTree(dir: 'lib', include: ['FancyCore-1.1.10.jar'])
+
+    implementation group: 'io.netty', name: 'netty-all', version: '4.1.24.Final'
 }
 
 def targetJavaVersion = 8
@@ -49,17 +51,19 @@ processResources {
 }
 compileJava.options.encoding = 'UTF-8'
 
-//project.buildDir = 'C:\\Users\\Gary\\Desktop\\Test'
-
-
-//tasks.register('copyReport', Copy) {
-//    from layout.buildDirectory.dir("C:/Users/Gary/IdeaProjects/FancyGui/build/libs/FancyGui-1.0.jar")
-//    into layout.buildDirectory.dir("C:/Users/Gary/Desktop/Test")
-//}
-
 task copyJar(type: Copy) {
     from jar
-    into 'C:/Users/Gary/Desktop/1.16.5/plugins'
+    into 'C:/Users/Gary/Desktop/PluginServer/1.16.5/plugins'
 }
 
-build.finalizedBy copyJar
+task copyJar1(type: Copy) {
+    from jar
+    into 'C:/Users/Gary/Desktop/PluginServer/1.15.2/plugins'
+}
+
+task multiIntoCopy {
+    finalizedBy copyJar
+    finalizedBy copyJar1
+}
+
+build.finalizedBy multiIntoCopy

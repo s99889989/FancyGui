@@ -4,6 +4,7 @@ package com.daxton.fancygui.command;
 
 import com.daxton.fancygui.FancyGui;
 import com.daxton.fancygui.gui.FancyGuiMain;
+import com.daxton.fancygui.task.ModMenu;
 import com.daxton.fancygui.task.Reload;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -48,6 +49,15 @@ public class MainCommand implements CommandExecutor {
                 FancyGui.fancyGui.getLogger().info(languageConfig.getString("LogMessage.Reload"));
             }
 
+
+        }
+        if(args.length == 2) {
+            if(sender instanceof Player){
+                if(args[0].equalsIgnoreCase("modgui")){
+                    Player player = (Player) sender;
+                    ModMenu.open(player, args[1]);
+                }
+            }
         }
 
         return true;

@@ -19,6 +19,16 @@ public class MenuSet {
 				TabCommand.guiList.add(commandKey);
 			}
 		});
+		GuiManager.command_Mod_Menu_Map.clear();
+		TabCommand.mod_gui_list.clear();
+		SearchConfigMap.filePathList(FileConfig.config_Map, "mod_menu/", false).forEach(path->{
+			FileConfiguration config = FileConfig.config_Map.get(path);
+			String commandKey = config.getString("Command");
+			if(commandKey != null){
+				GuiManager.command_Mod_Menu_Map.put(commandKey, path);
+				TabCommand.mod_gui_list.add(commandKey);
+			}
+		});
 	}
 
 

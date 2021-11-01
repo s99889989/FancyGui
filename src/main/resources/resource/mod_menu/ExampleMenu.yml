@@ -1,0 +1,13 @@
+#Gui標題
+#Gui title
+Title: 'ExampleMenu'
+
+GuiImage: 'https://i.imgur.com/PjvoO4k.png'
+
+#開啟指令/fgui gui exp
+#Open command /fgui gui exp
+Command: 'exp'
+
+#需要權限fancygui.exp
+#Need permission fancygui.exp
+Permission: 'exp'
