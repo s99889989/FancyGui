@@ -1,7 +1,6 @@
-package com.daxton.fancygui.api.modgui.menu_object.text;
+package com.daxton.fancygui.api.mod.menu_object.text;
 
 import com.daxton.fancycore.api.character.conversion.StringConversion;
-import com.daxton.fancygui.FancyGui;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -9,7 +8,6 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class TextLabelJson {
@@ -19,11 +17,7 @@ public class TextLabelJson {
 	//物件名稱
 	private String object_name = "";
 	//顯示文字大小
-	private float font_size;
-	//文字寬度(計算用)
-	private int font_width = 3;
-	//文字高度(計算用)
-	private int font_height = 7;
+	private float scale;
 	//基礎位置
 	private int position;
 	//X偏移
@@ -47,11 +41,9 @@ public class TextLabelJson {
 
 	}
 
-	public TextLabelJson(String object_name, float font_size, int font_width, int font_height, int position, int x, int y, boolean vertical, int row_height, int line_spacing, int align, boolean reverse_sort, List<String> text_list) {
+	public TextLabelJson(String object_name, float scale, int position, int x, int y, boolean vertical, int row_height, int line_spacing, int align, boolean reverse_sort, List<String> text_list) {
 		this.object_name = object_name;
-		this.font_size = font_size;
-		this.font_width = font_width;
-		this.font_height = font_height;
+		this.scale = scale;
 		this.position = position;
 		this.x = x;
 		this.y = y;
@@ -63,11 +55,9 @@ public class TextLabelJson {
 		this.text_list = text_list;
 	}
 
-	public TextLabelJson(LivingEntity self, LivingEntity target, String object_name, float font_size, int font_width, int font_height, int position, int x, int y, boolean vertical, int row_height, int line_spacing, int align, boolean reverse_sort, List<String> text_list) {
+	public TextLabelJson(LivingEntity self, LivingEntity target, String object_name, float scale, int position, int x, int y, boolean vertical, int row_height, int line_spacing, int align, boolean reverse_sort, List<String> text_list) {
 		this.object_name = object_name;
-		this.font_size = font_size;
-		this.font_width = font_width;
-		this.font_height = font_height;
+		this.scale = scale;
 		this.position = position;
 		this.x = x;
 		this.y = y;
@@ -195,27 +185,12 @@ public class TextLabelJson {
 		this.object_name = object_name;
 	}
 
-	public float getFont_size() {
-		return font_size;
+	public float getScale() {
+		return scale;
 	}
 
-	public void setFont_size(float font_size) {
-		this.font_size = font_size;
+	public void setScale(float scale) {
+		this.scale = scale;
 	}
 
-	public int getFont_width() {
-		return font_width;
-	}
-
-	public void setFont_width(int font_width) {
-		this.font_width = font_width;
-	}
-
-	public int getFont_height() {
-		return font_height;
-	}
-
-	public void setFont_height(int font_height) {
-		this.font_height = font_height;
-	}
 }

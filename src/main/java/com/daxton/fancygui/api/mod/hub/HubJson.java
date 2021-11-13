@@ -1,6 +1,5 @@
-package com.daxton.fancygui.api.modgui.hub;
+package com.daxton.fancygui.api.mod.hub;
 
-import com.daxton.fancygui.api.modgui.menu.MenuJson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

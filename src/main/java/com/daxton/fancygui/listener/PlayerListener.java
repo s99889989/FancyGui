@@ -1,14 +1,16 @@
 package com.daxton.fancygui.listener;
 
+import com.daxton.fancycore.api.fancyclient.ClientConnect;
 import com.daxton.fancygui.FancyGui;
 import com.daxton.fancygui.api.FancyModPlayer;
-import com.daxton.fancygui.api.build.ModButton;
-import com.daxton.fancygui.api.build.ModGUI;
-import com.daxton.fancygui.api.build.ModTextField;
+import com.daxton.fancygui.api.build.gui.ModButton;
+import com.daxton.fancygui.api.build.gui.ModGUI;
+import com.daxton.fancygui.api.build.gui.ModTextField;
 import com.daxton.fancygui.api.event.PlayerClickButtonEvent;
 import com.daxton.fancygui.api.event.PlayerCloseModGui;
 import com.daxton.fancygui.api.event.PlayerInputEndEvent;
 import com.daxton.fancygui.api.event.PlayerOpenModGui;
+import com.daxton.fancygui.api.json.JsonCtrl;
 import com.daxton.fancygui.manager.GuiManager;
 import com.daxton.fancygui.task.ModMenu;
 
@@ -123,20 +125,24 @@ public class PlayerListener implements Listener {
 
     }
 
-    @EventHandler
-    public void onSneak(PlayerToggleSneakEvent event){
-        Player player = event.getPlayer();
-        if(event.isSneaking()){
-            ModMenu.openMenuPath(player, "mod_menu/ExampleMenu.yml");
-            //ModMenu.openMenuTest(player);
-
-            //ModMenu.hubShow(player);
-        }else {
-
-            //ModMenu.hubHide(player);
-        }
-
-
-    }
+//    @EventHandler
+//    public void onSneak(PlayerToggleSneakEvent event){
+//        Player player = event.getPlayer();
+//        if(event.isSneaking()){
+//            //ModMenu.openMenuPath(player, "mod_menu/ExampleMenu.yml");
+//
+//            //ModMenu.openMenuTest(player);
+//
+//            //ModMenu.renderPlayer(player);
+//
+//            //ModMenu.hubShow(player);
+//        }else {
+//            //ModMenu.unRenderPlayer(player);
+//
+//            //ModMenu.hubHide(player);
+//        }
+//
+//
+//    }
 
 }

@@ -1,0 +1,51 @@
+#頭像框框
+Frame:
+  Type: Image
+  Image: 'https://i.imgur.com/qVUSIuv.png'
+  Width: 0
+  Height: 0
+#頭像
+Head:
+  Type: Image
+  Image: 'https://crafatar.com/avatars/&self_uuid&' #
+  Width: 30
+  Height: 30
+#長條框
+LongFrame:
+  Type: Image
+  Image: 'https://i.imgur.com/vupzmL5.png'
+  Width: 0
+  Height: 0
+#綠色條
+GreanBar:
+  Type: Image
+  Image: 'https://i.imgur.com/qFf8nCS.png'
+  Width: '&health_width&'
+  Height: 0
+#藍色條
+BlueBar:
+  Type: Image
+  Image: 'https://i.imgur.com/vk0jBVG.png'
+  Width: 0
+  Height: 0
+#橘色條
+BlueBar:
+  Type: Image
+  Image: 'https://i.imgur.com/RJe9Rpy.png'
+  Width: 0
+  Height: 0
+
+#橘色條
+BlueBar:
+  Type: Image
+  Image: 'https://i.imgur.com/RJe9Rpy.png'
+  Width: 0
+  Height: 0
+
+
+#橘色條
+Heart:
+  Type: Image
+  Image: 'https://i.imgur.com/6yZKeRW.png'
+  Width: 20
+  Height: 20

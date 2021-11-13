@@ -1,13 +1,84 @@
-#Gui標題
-#Gui title
-Title: 'ExampleMenu'
-
-GuiImage: 'https://i.imgur.com/PjvoO4k.png'
-
-#開啟指令/fgui gui exp
-#Open command /fgui gui exp
+#開啟指令/fgui modgui exp
+#Open command /fgui modgui exp
 Command: 'exp'
 
 #需要權限fancygui.exp
 #Need permission fancygui.exp
 Permission: 'exp'
+
+#GUI
+Gui:
+  #GUI圖片
+  Image: 'https://i.imgur.com/Rf9Tizv.png'
+  #GUI寬，設0為根據圖片尺寸。
+  Width: 0
+  #GUI高，設0為根據圖片尺寸。
+  Height: 0
+  #預設位置(1~9)
+  #1為靠左上、2為靠中上、3為靠右上、4為靠左、5為至中、6為靠右、7為靠左下、8為靠中下、9為靠右下
+  Position: 5
+  #GUI的X偏移
+  X: 0
+  #GUI的Y偏移
+  Y: 0
+
+#GUI物件
+ObjectList:
+  Close:
+    Object: 'ExampleObject.ButtonExample'
+    Position: 3
+    X: 0
+    Y: 0
+  ToOther:
+    Object: 'ExampleObject.ToOther'
+    Position: 3
+    X: 0
+    Y: 20
+  TextField:
+    Object: 'ExampleObject.TextFieldExample'
+    Position: 4
+    X: 0
+    Y: 0
+  Image:
+    Object: 'ExampleObject.ImageExample'
+    Position: 6
+    X: 0
+    Y: 0
+  Text:
+    Object: 'ExampleObject.TextExample'
+    Position: 2
+    X: 0
+    Y: 0
+
+  Frame:
+    Object: 'Hub.Frame'
+    Position: 1
+    X: 0
+    Y: 0
+  Head:
+    Object: 'Hub.Head'
+    Position: 1
+    X: 4
+    Y: 4
+  LongFrame:
+    Object: 'Hub.LongFrame'
+    Position: 1
+    X: 4
+    Y: 40
+  GreanBar:
+    Object: 'Hub.GreanBar'
+    Position: 1
+    X: 4
+    Y: 40
+  LongFrame2:
+    Object: 'Hub.LongFrame'
+    Position: 1
+    X: 4
+    Y: 50
+
+  BlueBar:
+    Object: 'Hub.BlueBar'
+    Position: 1
+    X: 4
+    Y: 50
+

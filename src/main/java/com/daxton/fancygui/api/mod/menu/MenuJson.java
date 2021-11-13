@@ -1,4 +1,4 @@
-package com.daxton.fancygui.api.modgui.menu;
+package com.daxton.fancygui.api.mod.menu;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

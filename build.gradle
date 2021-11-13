@@ -61,9 +61,15 @@ task copyJar1(type: Copy) {
     into 'C:/Users/Gary/Desktop/PluginServer/1.15.2/plugins'
 }
 
+task copyJar2(type: Copy) {
+    from jar
+    into 'C:/Users/Gary/Desktop/PluginServer/1.17.1/plugins'
+}
+
 task multiIntoCopy {
     finalizedBy copyJar
     finalizedBy copyJar1
+    finalizedBy copyJar2
 }
 
 build.finalizedBy multiIntoCopy

@@ -1,9 +1,7 @@
-package com.daxton.fancygui.api.modgui.menu_object.button;
+package com.daxton.fancygui.api.mod.menu_object.button;
 
 
 import com.daxton.fancycore.api.character.conversion.StringConversion;
-import com.daxton.fancygui.FancyGui;
-import com.daxton.fancygui.api.build.ModButton;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.bukkit.configuration.file.FileConfiguration;

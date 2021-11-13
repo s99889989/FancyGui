@@ -1,0 +1,129 @@
+#按鈕
+ButtonExample:
+  Type: Button
+  DisplayName: '§eClose window'
+  ImageOn: 'https://i.imgur.com/VmfhCq2.png'
+  ImageOff: 'https://i.imgur.com/9q8FpAt.png'
+  WidthOn: 0
+  HeightOn: 0
+  WidthOff: 0
+  HeightOff: 0
+  Close: false
+  ToMenu: ''
+  Action:
+    Left:
+    - 'Action[a=CloseGui]'
+
+ToOther:
+  Type: Button
+  DisplayName: '§eTo Other'
+  ImageOn: 'https://i.imgur.com/VmfhCq2.png'
+  ImageOff: 'https://i.imgur.com/9q8FpAt.png'
+  WidthOn: 0
+  HeightOn: 0
+  WidthOff: 0
+  HeightOff: 0
+  ToMenu: 'ExampleMenu2'
+  Action:
+    Left:
+    - 'Action[a=CloseGui]'
+
+ToMain:
+  Type: Button
+  DisplayName: '§eTo Main'
+  ImageOn: 'https://i.imgur.com/VmfhCq2.png'
+  ImageOff: 'https://i.imgur.com/9q8FpAt.png'
+  WidthOn: 0
+  HeightOn: 0
+  WidthOff: 0
+  HeightOff: 0
+  ToMenu: 'ExampleMenu'
+  Action:
+    Left:
+    - 'Action[a=CloseGui]'
+
+ButtonHomer:
+  Type: Button
+  DisplayName: '§eCast Homer'
+  ImageOn: 'https://i.imgur.com/VmfhCq2.png'
+  ImageOff: 'https://i.imgur.com/9q8FpAt.png'
+  WidthOn: 0
+  HeightOn: 0
+  WidthOff: 0
+  HeightOff: 0
+  Close: false
+  ToMenu: ''
+  Action:
+    Left:
+    - 'Action[a=MythicSkillHomer]'
+
+SmashAttack:
+  Type: Button
+  DisplayName: '§eCast SmashAttack'
+  ImageOn: 'https://i.imgur.com/VmfhCq2.png'
+  ImageOff: 'https://i.imgur.com/9q8FpAt.png'
+  WidthOn: 0
+  HeightOn: 0
+  WidthOff: 0
+  HeightOff: 0
+  Close: false
+  ToMenu: ''
+  Action:
+    Left:
+    - 'Action[a=MythicSkillSmashAttack]'
+
+ButtonTornado:
+  Type: Button
+  DisplayName: '§eCast a tornado'
+  ImageOn: 'https://i.imgur.com/VmfhCq2.png'
+  ImageOff: 'https://i.imgur.com/9q8FpAt.png'
+  WidthOn: 0
+  HeightOn: 0
+  WidthOff: 0
+  HeightOff: 0
+  Close: false
+  ToMenu: ''
+  Action:
+    Left:
+    - 'Action[a=Tornado]'
+#文字輸入框
+TextFieldExample:
+  Type: TextField
+  Image: 'https://i.imgur.com/wh32c81.png'
+  Width: 100
+  Height: 20
+#圖片
+ImageExample:
+  Type: Image
+  Image: 'https://i.imgur.com/5B9nsam.png'
+  Width: 20
+  Height: 20
+#文字
+TextExample:
+  Type: Text
+  #文字反向排序
+  ReverseSort: false
+  #是否垂直顯示
+  Vertical: false
+  #行高
+  RowHeight: 7
+  #行距
+  LineSpacing: 0
+  #水平對齊(1=靠左,2=置中,3=靠右)
+  #垂直對齊(1=靠上,2=置中,3=靠下)
+  Align: 2
+  Text:
+  - 'Example'
+  - '範例: &text_field_1&'
+  - '雷達火'
+
+
+
+
+
+
+
+
+
+
+

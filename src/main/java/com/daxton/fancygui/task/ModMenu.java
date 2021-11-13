@@ -2,17 +2,24 @@ package com.daxton.fancygui.task;
 
 import com.daxton.fancycore.api.fancyclient.ClientConnect;
 
-import com.daxton.fancygui.api.build.*;
+import com.daxton.fancygui.api.build.gui.*;
+import com.daxton.fancygui.api.build.hub.ModHub;
+import com.daxton.fancygui.api.build.player.ModImageRenderer;
+import com.daxton.fancygui.api.build.player.ModItemRenderer;
+import com.daxton.fancygui.api.build.player.ModPlayerRenderer;
+import com.daxton.fancygui.api.build.player.ModTextRenderer;
 import com.daxton.fancygui.api.json.JsonCtrl;
-import com.daxton.fancygui.api.modgui.menu.MenuJson;
-import com.daxton.fancygui.api.modgui.menu_object.button.ClickButtonJson;
-import com.daxton.fancygui.api.modgui.menu_object.image.ImageShowJson;
-import com.daxton.fancygui.api.modgui.menu_object.text.TextLabelJson;
-import com.daxton.fancygui.api.modgui.menu_object.textfield.TextFieldJson;
+import com.daxton.fancygui.api.mod.menu.MenuJson;
+import com.daxton.fancygui.api.mod.menu_object.button.ClickButtonJson;
+import com.daxton.fancygui.api.mod.menu_object.image.ImageShowJson;
+import com.daxton.fancygui.api.mod.menu_object.text.TextLabelJson;
+import com.daxton.fancygui.api.mod.menu_object.textfield.TextFieldJson;
 import com.daxton.fancygui.config.FileConfig;
 import com.daxton.fancygui.manager.GuiManager;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +102,7 @@ public class ModMenu {
 
 		}
 
-		ClientConnect.sendMessage(player, "updatamenu:"+JsonCtrl.writeJSON(menuJson));
+		ClientConnect.sendMessage(player, "updatamenu", JsonCtrl.writeJSON(menuJson));
 	}
 
 	public static void openMenuPath(Player player, String path){
@@ -147,77 +154,160 @@ public class ModMenu {
 
 		}
 
-		ClientConnect.sendMessage(player, "menu:"+JsonCtrl.writeJSON(menuJson));
+		ClientConnect.sendMessage(player, "MenuOpen", JsonCtrl.writeJSON(menuJson));
 	}
 
-	public static void hubShow(Player player){
-		int fontWidth = 3;
-		int fontHeight = 8;
-		ModText modText1 = ModText.ModTextBuilder.getInstance().addTextList("§31增加內容").addTextList("§41增加內容雷雷").setObjectName("t1")
-			.setFontSize(1F).setAlign(1).setRow_height(8).setPosition(1).setFont_width(fontWidth).setFont_height(fontHeight).build();
-		ModText modText2 = ModText.ModTextBuilder.getInstance().addTextList("§32增加內容").addTextList("§42增加內容雷雷").setObjectName("t2")
-			.setFontSize(1F).setAlign(1).setRow_height(8).setPosition(2).setFont_width(fontWidth).setFont_height(fontHeight).build();
-		ModText modText3 = ModText.ModTextBuilder.getInstance().addTextList("§33增加內容").addTextList("§43增加內容雷雷").setObjectName("t3")
-			.setFontSize(1F).setAlign(1).setRow_height(8).setPosition(3).setFont_width(fontWidth).setFont_height(fontHeight).build();
-		ModText modText4 = ModText.ModTextBuilder.getInstance().addTextList("§34增加內容").addTextList("§44增加內容雷雷").setObjectName("t4")
-			.setFontSize(1F).setAlign(1).setRow_height(8).setPosition(4).setFont_width(fontWidth).setFont_height(fontHeight).build();
-		ModText modText5 = ModText.ModTextBuilder.getInstance().addTextList("§35增加內容").addTextList("§45增加內容雷雷").setObjectName("t5")
-			.setFontSize(1F).setAlign(1).setRow_height(8).setPosition(5).setFont_width(fontWidth).setFont_height(fontHeight).build();
-		ModText modText6 = ModText.ModTextBuilder.getInstance().addTextList("§36增加內容").addTextList("§46增加內容雷雷").setObjectName("t6")
-			.setFontSize(1F).setAlign(1).setRow_height(8).setPosition(6).setFont_width(fontWidth).setFont_height(fontHeight).build();
-		ModText modText7 = ModText.ModTextBuilder.getInstance().addTextList("§37增加內容").addTextList("§47增加內容雷雷").setObjectName("t7")
-			.setFontSize(1F).setAlign(1).setRow_height(8).setPosition(7).setFont_width(fontWidth).setFont_height(fontHeight).build();
-		ModText modText8 = ModText.ModTextBuilder.getInstance().addTextList("§38增加內容").addTextList("§48增加內容雷雷").setObjectName("t8")
-			.setFontSize(1F).setAlign(1).setRow_height(8).setPosition(8).setFont_width(fontWidth).setFont_height(fontHeight).build();
-		ModText modText9 = ModText.ModTextBuilder.getInstance().addTextList("§39增加內容").addTextList("§49增加內容雷雷").setObjectName("t9")
-			.setFontSize(1F).setAlign(1).setRow_height(8).setPosition(9).setFont_width(fontWidth).setFont_height(fontHeight).build();
+	//渲染玩家測試
+	public static void renderPlayer(Player player){
 
-		ModImage modImage = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i2")
-			.setPosition(6).setWidth(60).setHeight(60).build();
+		//圖片
+		ModImageRenderer modImageRenderer = ModImageRenderer.ModImageRendererBuilder.getInstance()
+			.setImage("https://i.imgur.com/PHnFyNo.png").setObjectName("Im1").setWidth(2).setHeight(2)
+			.setAutoRotationZ(1).setAutoRotationY(1).setLocationHeight(0.5).build();
+		//物品
+		ModItemRenderer modItemRenderer = ModItemRenderer.ModItemRendererBuilder.getInstance()
+			.setItemStack(new ItemStack(Material.STONE_SWORD)).setLocationHeight(1.3).setScale(3).setAutoRotationY(1)
+			.setAutoRotationX(1).setObjectName("It1").build();
+		//文字
+		ModTextRenderer modTextRenderer = ModTextRenderer.ModTextRendererBuilder.getInstance()
+			.setTextList(new String[]{"123", "456"}).setObjectName("T1").setLocationHeight(100)
+			.setLocationAngle(0).setLocationDistance(100).build();
 
-		ModHub modHub = ModHub.ModHubBuilder.getInstance().add(modImage)
-			.add(modText1).add(modText2).add(modText3)
-			.add(modText4).add(modText5).add(modText6)
-			.add(modText7).add(modText8).add(modText9)
+		ModPlayerRenderer modPlayerRenderer = ModPlayerRenderer.ModPlayerRendererBuilder.getInstance().build();
+		modPlayerRenderer.addComponent(modItemRenderer)
+			.addComponent(modImageRenderer)
+			.addComponent(modTextRenderer)
+			.render(player);
+	}
+	//取消渲染玩家測試
+	public static void unRenderPlayer(Player player){
+
+
+		//圖片
+		ModImageRenderer modImageRenderer = ModImageRenderer.ModImageRendererBuilder.getInstance()
+			.setImage("https://i.imgur.com/PHnFyNo.png")
+			.setObjectName("Im1")
+			.setWidth(2)
+			.setHeight(3)
+			.setLocationHeight(0.5)
+			.build();
+		//物品
+		ModItemRenderer modItemRenderer = ModItemRenderer.ModItemRendererBuilder.getInstance()
+			.setItemStack(new ItemStack(Material.STONE_SWORD))
+			.setLocationHeight(1)
+			.setObjectName("It1")
+			.build();
+		//文字
+		ModTextRenderer modTextRenderer = ModTextRenderer.ModTextRendererBuilder.getInstance()
+			.setTextList(new String[]{"123", "456"})
+			.setObjectName("T1")
 			.build();
 
+		ModPlayerRenderer modPlayerRenderer = ModPlayerRenderer.ModPlayerRendererBuilder.getInstance().build();
+		modPlayerRenderer.addComponent(modItemRenderer)
+			.addComponent(modImageRenderer)
+			.addComponent(modTextRenderer)
+			.unRender(player);
+	}
+
+	//打開HUB測試
+	public static void hubShow(Player player){
+		ModText modText1 = ModText.ModTextBuilder.getInstance()
+			.addTextList("§31Content 1").addTextList("§41Content 2").addTextList("§41Cont我我").setObjectName("t1")
+			.setScale(1F).setAlign(1).setRow_height(8).setPosition(2).setX(20).setY(40).build();
+
+		ItemStack itemStack = new ItemStack(Material.COAL_ORE);
+
+		ModItem modItem1 = ModItem.ModItemBuilder.getInstance()
+			.setObjectName("1").setPlayer(player).setItemStack(itemStack)
+			.setPosition(5).setScale(2).build();
+
+		ModImage frame = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/qVUSIuv.png").setObject_name("frame")
+			.setPosition(1).setX(0).setY(0).build();
+		ModImage head = ModImage.ModImageBuilder.getInstance().setImage("https://crafatar.com/avatars/&self_uuid&").setObject_name("head")
+			.setPosition(1).setWidth("30").setHeight("30").setX(4).setY(4).build();
+		ModImage longFrame1 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/vupzmL5.png").setObject_name("longFrame1")
+			.setPosition(1).setX(40).setY(5).build();
+		ModImage greanBar = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/qFf8nCS.png").setObject_name("greanBar")
+			.setPosition(1).setWidth("&health_width&").setX(40).setY(5).build();
+		ModImage longFrame2 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/vupzmL5.png").setObject_name("longFrame2")
+			.setPosition(1).setX(40).setY(15).build();
+		ModImage blueBar = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/vk0jBVG.png").setObject_name("blueBar")
+			.setPosition(1).setX(40).setY(15).build();
+
+		ModImage modImage2 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i2")
+			.setPosition(3).setWidth("60").setHeight("60").build();
+		ModImage modImage3 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i3")
+			.setPosition(4).setWidth("60").setHeight("60").build();
+		ModImage modImage4 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i4")
+			.setPosition(6).setWidth("60").setHeight("60").build();
+		ModImage modImage5 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i5")
+			.setPosition(7).setWidth("60").setHeight("60").build();
+		ModImage modImage6 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i6")
+			.setPosition(8).setWidth("60").setHeight("60").build();
+		ModImage modImage7 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i7")
+			.setPosition(9).setWidth("60").setHeight("60").build();
+
+		ModHub modHub = ModHub.ModHubBuilder.getInstance()
+			.addComponent(frame).addComponent(head).addComponent(longFrame1).addComponent(greanBar).addComponent(longFrame2).addComponent(blueBar)
+			.addComponent(modImage2).addComponent(modImage3)
+			.addComponent(modImage4).addComponent(modImage5).addComponent(modImage6)
+			.addComponent(modImage7)
+			.addComponent(modText1)
+			.addComponent(modItem1).build();
 		modHub.show(player);
 	}
-
+	//關閉HUB測試
 	public static void hubHide(Player player){
 
-		ModText modText1 = ModText.ModTextBuilder.getInstance().addTextList("§31增加內容").addTextList("§41增加內容雷雷").setObjectName("t1")
-			.setFontSize(2F).setAlign(1).setRow_height(8).setPosition(1).build();
-		ModText modText2 = ModText.ModTextBuilder.getInstance().addTextList("§32增加內容").addTextList("§42增加內容雷雷").setObjectName("t2")
-			.setFontSize(2F).setAlign(1).setRow_height(8).setPosition(2).build();
-		ModText modText3 = ModText.ModTextBuilder.getInstance().addTextList("§33增加內容").addTextList("§43增加內容雷雷").setObjectName("t3")
-			.setFontSize(2F).setAlign(1).setRow_height(8).setPosition(3).build();
-		ModText modText4 = ModText.ModTextBuilder.getInstance().addTextList("§34增加內容").addTextList("§44增加內容雷雷").setObjectName("t4")
-			.setFontSize(2F).setAlign(1).setRow_height(8).setPosition(4).build();
-		ModText modText5 = ModText.ModTextBuilder.getInstance().addTextList("§35增加內容").addTextList("§45增加內容雷雷").setObjectName("t5")
-			.setFontSize(2F).setAlign(1).setRow_height(8).setPosition(5).build();
-		ModText modText6 = ModText.ModTextBuilder.getInstance().addTextList("§36增加內容").addTextList("§46增加內容雷雷").setObjectName("t6")
-			.setFontSize(2F).setAlign(1).setRow_height(8).setPosition(6).build();
-		ModText modText7 = ModText.ModTextBuilder.getInstance().addTextList("§37增加內容").addTextList("§47增加內容雷雷").setObjectName("t7")
-			.setFontSize(2F).setAlign(1).setRow_height(8).setPosition(7).build();
-		ModText modText8 = ModText.ModTextBuilder.getInstance().addTextList("§38增加內容").addTextList("§48增加內容雷雷").setObjectName("t8")
-			.setFontSize(2F).setAlign(1).setRow_height(8).setPosition(8).build();
-		ModText modText9 = ModText.ModTextBuilder.getInstance().addTextList("§39增加內容").addTextList("§49增加內容雷雷").setObjectName("t9")
-			.setFontSize(2F).setAlign(1).setRow_height(8).setPosition(9).build();
+		ModText modText1 = ModText.ModTextBuilder.getInstance()
+			.addTextList("§31Content 1").addTextList("§41Content 2").setObjectName("t1")
+			.setScale(3F).setAlign(1).setRow_height(8).setPosition(2).build();
 
-		ModImage modImage = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i2")
-			.setPosition(6).setWidth(60).setHeight(60).build();
+		ItemStack itemStack = new ItemStack(Material.COAL_ORE);
+		ModItem modItem1 = ModItem.ModItemBuilder.getInstance()
+			.setObjectName("1").setPlayer(player).setItemStack(itemStack)
+			.setPosition(5).setScale(2).build();
 
-		ModHub modHub = ModHub.ModHubBuilder.getInstance().add(modImage)
-			.add(modText1).add(modText2).add(modText3)
-			.add(modText4).add(modText5).add(modText6)
-			.add(modText7).add(modText8).add(modText9)
-			.build();
+		ModImage frame = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/qVUSIuv.png").setObject_name("frame")
+			.setPosition(1).setX(0).setY(0).build();
+		ModImage head = ModImage.ModImageBuilder.getInstance().setImage("https://crafatar.com/avatars/&self_uuid&").setObject_name("head")
+			.setPosition(1).setX(4).setY(4).build();
+		ModImage longFrame1 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/vupzmL5.png").setObject_name("longFrame1")
+			.setPosition(1).setX(40).setY(5).build();
+		ModImage greanBar = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/vupzmL5.png").setObject_name("greanBar")
+			.setPosition(1).setX(40).setY(5).build();
+		ModImage longFrame2 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/qFf8nCS.png").setObject_name("longFrame2")
+			.setPosition(1).setX(40).setY(15).build();
+		ModImage blueBar = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/vk0jBVG.png").setObject_name("blueBar")
+			.setPosition(1).setX(40).setY(15).build();
 
+
+		ModImage modImage2 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i2")
+			.setPosition(3).setWidth("60").setHeight("60").build();
+		ModImage modImage3 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i3")
+			.setPosition(4).setWidth("60").setHeight("60").build();
+		ModImage modImage4 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i4")
+			.setPosition(6).setWidth("60").setHeight("60").build();
+		ModImage modImage5 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i5")
+			.setPosition(7).setWidth("60").setHeight("60").build();
+		ModImage modImage6 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i6")
+			.setPosition(8).setWidth("60").setHeight("60").build();
+		ModImage modImage7 = ModImage.ModImageBuilder.getInstance().setImage("https://i.imgur.com/5B9nsam.png").setObject_name("i7")
+			.setPosition(9).setWidth("60").setHeight("60").build();
+
+		ModHub modHub = ModHub.ModHubBuilder.getInstance()
+			.addComponent(frame).addComponent(head).addComponent(longFrame1).addComponent(greanBar).addComponent(longFrame2).addComponent(blueBar)
+			.addComponent(modImage2).addComponent(modImage3)
+			.addComponent(modImage4).addComponent(modImage5).addComponent(modImage6)
+			.addComponent(modImage7)
+			.addComponent(modText1)
+			.addComponent(modItem1).build();
 		modHub.hide(player);
 	}
-
+	//打開GUI測試
 	public static void openMenuTest(Player player){
+//.setImage("textures/gui/test.png")
 
 		ModGUI modGUI = ModGUI.ModGUIBuilder.getInstance()
 			.setGui_id("Test")
@@ -228,13 +318,13 @@ public class ModMenu {
 		ModImage modImage = ModImage.ModImageBuilder.getInstance()
 			.setImage("https://i.imgur.com/5B9nsam.png")
 			.setPosition(5)
-			.setWidth(40)
-			.setHeight(40)
+			.setWidth("40")
+			.setHeight("40")
 			.build();
 
 		ModText modText = ModText.ModTextBuilder.getInstance()
-			.addTextList("§3增加內容:")
-			.setFontSize(2F)
+			.addTextList("§3Add content:")
+			.setScale(2F)
 			.setAlign(1)
 			.setRow_height(8)
 			.setPosition(1)
@@ -249,27 +339,51 @@ public class ModMenu {
 			.setWidth(80)
 			.build();
 		modTextField.onEndInput(modTextField1 -> {
-			modText.setText(1, "輸入框: "+modTextField1.getText());
+			modText.setText(1, "Input box: "+modTextField1.getText());
 			modGUI.updata(player);
 		});
 
 		ModButton modButton = ModButton.ModButtonBuilder.getInstance()
 			.setImage_on("https://i.imgur.com/9q8FpAt.png")
 			.setImage_off("https://i.imgur.com/VmfhCq2.png")
-			.setDisplay_name("增加內容")
+			.setDisplay_name("Click on")
 			.setPosition(1)
 			.setY(25)
 			.build();
+		ModButton modButton1 = ModButton.ModButtonBuilder.getInstance()
+			.setImage_on("https://i.imgur.com/9q8FpAt.png")
+			.setImage_off("https://i.imgur.com/VmfhCq2.png")
+			.setDisplay_name("Click on")
+			.setPosition(9)
+			.build();
 		modButton.onButtonClick(clickButton -> {
-			//FancyGui.sendLogger("按下按鈕!");
-			modText.setText(1, "按鈕: "+modTextField.getText());
+			modText.setText(1, "Button: "+modTextField.getText());
 			modGUI.updata(player);
 		});
 
-		modGUI.addComponents(modButton)
-			.addComponents(modImage)
-			.addComponents(modText)
-			.addComponents(modTextField)
+		ItemStack itemStack = new ItemStack(Material.COAL_ORE);
+		List<String> arrayList = new ArrayList<>();
+		arrayList.add("1");
+		arrayList.add("2");
+		arrayList.add("3");
+		itemStack.setLore(arrayList);
+		float sc = 2F;
+		ModItem modItem1 = ModItem.ModItemBuilder.getInstance().setPlayer(player).setItemStack(itemStack).setPosition(1).setScale(sc).build();
+		ModItem modItem3 = ModItem.ModItemBuilder.getInstance().setPlayer(player).setItemStack(itemStack).setPosition(3).setScale(sc).build();
+		ModItem modItem4 = ModItem.ModItemBuilder.getInstance().setPlayer(player).setItemStack(itemStack).setPosition(4).setScale(sc).build();
+		ModItem modItem6 = ModItem.ModItemBuilder.getInstance().setPlayer(player).setItemStack(itemStack).setPosition(6).setScale(sc).build();
+		ModItem modItem7 = ModItem.ModItemBuilder.getInstance().setPlayer(player).setItemStack(itemStack).setPosition(7).setScale(sc).build();
+		ModItem modItem8 = ModItem.ModItemBuilder.getInstance().setPlayer(player).setItemStack(itemStack).setPosition(8).setScale(sc).build();
+		ModItem modItem9 = ModItem.ModItemBuilder.getInstance().setPlayer(player).setItemStack(itemStack).setPosition(9).setScale(sc).build();
+
+		modGUI
+			.addComponent(modButton).addComponent(modButton1)
+			.addComponent(modImage)
+			.addComponent(modText)
+			.addComponent(modTextField)
+			.addComponent(modItem1).addComponent(modItem3)
+			.addComponent(modItem4).addComponent(modItem6)
+			.addComponent(modItem7).addComponent(modItem8).addComponent(modItem9)
 			.open(player);
 
 	}

@@ -12,7 +12,7 @@ public class Reload {
         //設置按鈕
         ButtonSet.execute();
         //定時執行任務
-        RunTask.execute();
+        //RunTask.execute();
     }
 
 }

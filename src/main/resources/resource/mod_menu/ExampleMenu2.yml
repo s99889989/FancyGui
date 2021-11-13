@@ -1,0 +1,57 @@
+#開啟指令/fgui modgui exp
+#Open command /fgui modgui exp
+Command: 'exp2'
+
+#需要權限fancygui.exp
+#Need permission fancygui.exp
+Permission: 'exp2'
+
+#GUI
+Gui:
+  #GUI圖片
+  Image: 'https://i.imgur.com/Rf9Tizv.png'
+  #GUI寬，設0為根據圖片尺寸。
+  Width: 0
+  #GUI高，設0為根據圖片尺寸。
+  Height: 0
+  #預設位置(1~9)
+  #1為靠左上、2為靠中上、3為靠右上、4為靠左、5為至中、6為靠右、7為靠左下、8為靠中下、9為靠右下
+  Position: 5
+  #GUI的X偏移
+  X: 0
+  #GUI的Y偏移
+  Y: 0
+
+#GUI物件
+ObjectList:
+  Close:
+    Object: 'ExampleObject.ButtonExample'
+    Position: 3
+    X: 0
+    Y: 0
+  ToMain:
+    Object: 'ExampleObject.ToMain'
+    Position: 3
+    X: 0
+    Y: 20
+  ButtonTornado:
+    Object: 'ExampleObject.ButtonTornado'
+    Position: 5
+    X: 0
+    Y: 0
+  ButtonHomer:
+    Object: 'ExampleObject.ButtonHomer'
+    Position: 5
+    X: 0
+    Y: 20
+  ButtonSmashAttack:
+    Object: 'ExampleObject.SmashAttack'
+    Position: 5
+    X: 0
+    Y: 40
+
+
+
+
+
+

@@ -1,6 +1,7 @@
-package com.daxton.fancygui.api.modgui.menu_object.image;
+package com.daxton.fancygui.api.mod.menu_object.image;
 
 import com.daxton.fancycore.api.character.conversion.StringConversion;
+import com.daxton.fancygui.FancyGui;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -30,24 +31,25 @@ public class ImageShowJson {
 
 	}
 
-	public ImageShowJson(String object_name, String image, int width, int height, int position, int x, int y) {
+	public ImageShowJson(String object_name, String image, String width, String height, int position, int x, int y) {
 		this.object_name = object_name;
 		this.image = image;
-		this.width = width;
-		this.height = height;
+		this.width = StringConversion.getInt(null, null, 0, width);
+		this.height = StringConversion.getInt(null, null, 0, height);
 		this.position = position;
 		this.x = x;
 		this.y = y;
 	}
 
-	public ImageShowJson(LivingEntity self, LivingEntity target, String object_name, String image, int width, int height, int position, int x, int y) {
+	public ImageShowJson(LivingEntity self, LivingEntity target, String object_name, String image, String width, String height, int position, int x, int y) {
 		this.object_name = object_name;
-		this.image = image;
-		this.width = width;
-		this.height = height;
+		this.image = StringConversion.getString(self, target, image);
+		this.width = StringConversion.getInt(self, target, 0, width);
+		this.height = StringConversion.getInt(self, target, 0, height);
 		this.position = position;
 		this.x = x;
 		this.y = y;
+		//FancyGui.sendLogger(width+" : "+this.width);
 	}
 
 	//建立
@@ -59,7 +61,6 @@ public class ImageShowJson {
 		this.width = StringConversion.getInt(player, null, 0, object_config.getString(button_key+".Width"));
 		this.height = StringConversion.getInt(player, null, 0, object_config.getString(button_key+".Height"));
 		this.image = StringConversion.getString(player, null, object_config.getString(button_key+".Image"));
-
 	}
 
 	//把字串轉成Image

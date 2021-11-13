@@ -1,4 +1,4 @@
-package com.daxton.fancygui.api.modgui.menu_object.textfield;
+package com.daxton.fancygui.api.mod.menu_object.textfield;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

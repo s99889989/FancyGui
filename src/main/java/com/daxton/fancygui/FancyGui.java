@@ -2,6 +2,7 @@ package com.daxton.fancygui;
 
 import com.daxton.fancygui.command.MainCommand;
 import com.daxton.fancygui.command.TabCommand;
+import com.daxton.fancygui.listener.ClientListener;
 import com.daxton.fancygui.listener.PlayerListener;
 import com.daxton.fancygui.task.Start;
 import org.bukkit.Bukkit;
@@ -27,6 +28,7 @@ public final class FancyGui extends JavaPlugin {
 		Objects.requireNonNull(Bukkit.getPluginCommand("fancygui")).setTabCompleter(new TabCommand());
 		//玩家監聽
 		Bukkit.getPluginManager().registerEvents(new PlayerListener(), fancyGui);
+		Bukkit.getPluginManager().registerEvents(new ClientListener(), fancyGui);
 		//執行任務
 		Start.execute();
 
